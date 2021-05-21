@@ -1,0 +1,3 @@
+include ':drawable-kt'
+include ':app'
+rootProject.name = "DrawableKt"
