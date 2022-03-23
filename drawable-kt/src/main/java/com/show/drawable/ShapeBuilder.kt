@@ -12,6 +12,8 @@ enum class Shape {
 
 class ShapeBuilder(val shape: Shape) {
 
+    private var padding = IntArray(4)
+
     private var cornerRadius = FloatArray(8)
 
     private var colorBuilder = ColorStaticListsBuilder()
@@ -48,6 +50,14 @@ class ShapeBuilder(val shape: Shape) {
             rightBottom,
             rightBottom
         )
+    }
+
+
+    fun padding(left: Int = 0, top: Int = 0, right: Int = 0, bottom: Int = 0) {
+        padding[0] = left
+        padding[1] = top
+        padding[2] = right
+        padding[3] = bottom
     }
 
     fun stroke(width: Int, color: ColorStateList) {
@@ -133,6 +143,7 @@ class ShapeBuilder(val shape: Shape) {
         return creator.create()
     }
 
+    fun getPadding() = padding
     fun innerRadiusRatio() = innerRadiusRatio
     fun thicknessRatio() = thicknessRatio
     fun gradientBuilder() = gradientBuilder

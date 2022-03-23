@@ -1,12 +1,9 @@
 package com.show.example
 
 import android.graphics.Color
-import android.graphics.LinearGradient
-import android.graphics.drawable.ShapeDrawable
-import android.graphics.drawable.shapes.OvalShape
+import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.content.ContextCompat
 import com.show.drawable.Shape
 import com.show.drawable.dp
@@ -32,8 +29,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            val drawable2 = drawable {
+                shape(Shape.RECTANGLE){
+                    solid(colorStaticList {
+                        default(Color.BLACK)
+                    })
+                    padding(20f.dp.toInt(),20f.dp.toInt(),20f.dp.toInt(),20f.dp.toInt())
+                }
+            }
 
-            image.setImageDrawable(drawable)
+            image.background = LayerDrawable(arrayOf(drawable,drawable2))
 
 
         }
